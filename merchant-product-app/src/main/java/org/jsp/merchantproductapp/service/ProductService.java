@@ -7,6 +7,7 @@ import org.jsp.merchantproductapp.dao.ProductDao;
 import org.jsp.merchantproductapp.dto.Merchant;
 import org.jsp.merchantproductapp.dto.Product;
 import org.jsp.merchantproductapp.dto.ResponseStructure;
+import org.jsp.merchantproductapp.exception.MerchantNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,6 +33,6 @@ public class ProductService {
 			structure.setStatusCode(HttpStatus.CREATED.value());
 			return new ResponseEntity<ResponseStructure<Product>>(structure, HttpStatus.CREATED);
 		}
-		return null;
+		throw new MerchantNotFoundException();
 	}
 }
