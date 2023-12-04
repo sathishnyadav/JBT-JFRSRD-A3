@@ -17,4 +17,14 @@ public class MerchantProductAppExceptionHandler extends ResponseEntityExceptionH
 		structure.setData("Invalid merchant Id");
 		return new ResponseEntity<ResponseStructure<String>>(structure, HttpStatus.NOT_FOUND);
 	}
+
+	@ExceptionHandler(ProductNotFoundException.class)
+	public ResponseEntity<ResponseStructure<String>> handlePNFE(ProductNotFoundException exception) {
+		ResponseStructure<String> structure = new ResponseStructure<>();
+		structure.setMessage(exception.getMessage());
+		structure.setStatusCode(HttpStatus.NOT_FOUND.value());
+		structure.setData("Product Not Found");
+		return new ResponseEntity<ResponseStructure<String>>(structure, HttpStatus.NOT_FOUND);
+	}
+
 }

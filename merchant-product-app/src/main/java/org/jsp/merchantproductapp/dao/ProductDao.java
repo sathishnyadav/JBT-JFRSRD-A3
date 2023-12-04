@@ -1,5 +1,6 @@
 package org.jsp.merchantproductapp.dao;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.jsp.merchantproductapp.dto.Product;
@@ -18,5 +19,17 @@ public class ProductDao {
 
 	public Optional<Product> findById(int id) {
 		return productRepository.findById(id);
+	}
+
+	public List<Product> findByBrand(String brand) {
+		return productRepository.findByBrand(brand);
+	}
+
+	public List<Product> findByCategory(String category) {
+		return productRepository.findByCategory(category);
+	}
+
+	public List<Product> findByMerchantId(int id) {
+		return productRepository.findByMerchantId(id);
 	}
 }
